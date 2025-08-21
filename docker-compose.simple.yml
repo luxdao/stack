@@ -3,7 +3,8 @@ services:
   anvil:
     image: ghcr.io/foundry-rs/foundry:latest
     container_name: luxdao-anvil
-    command: ["anvil", "--host", "0.0.0.0", "--chain-id", "1337", "--accounts", "10", "--block-time", "3"]
+    entrypoint: ["anvil"]
+    command: ["--host", "0.0.0.0", "--chain-id", "1337", "--accounts", "10", "--block-time", "3"]
     ports:
       - "8545:8545"
     networks:
