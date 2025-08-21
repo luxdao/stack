@@ -18,14 +18,17 @@ LuxDAO Stack provides a comprehensive decentralized autonomous organization (DAO
 git clone https://github.com/luxdao/stack.git
 cd stack
 
-# Install dependencies
-make install
+# Install all dependencies
+make install-all
 
-# Start the stack
+# Start infrastructure (Anvil, Postgres, Redis, IPFS)
 make up
 
-# Run tests
-make test
+# Start the application
+make dev
+
+# OR start everything in Docker
+make up-full
 ```
 
 ## Services
@@ -42,9 +45,22 @@ make test
 
 ## Development
 
-### Local Development (without Docker)
+### Deployment Options
+
+#### Option 1: Basic Infrastructure + Local App
 ```bash
-make dev  # Start with hot reload
+make up      # Start infrastructure (Anvil, DB, Redis, IPFS)
+make dev     # Start app locally with hot reload
+```
+
+#### Option 2: Full Docker Stack
+```bash
+make up-full  # Start everything in Docker
+```
+
+#### Option 3: Local Development
+```bash
+make local   # Run everything locally without Docker
 ```
 
 ### Running Tests
