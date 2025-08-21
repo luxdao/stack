@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   # Anvil - Local Ethereum blockchain
   anvil:

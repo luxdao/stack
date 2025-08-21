@@ -31,11 +31,24 @@ install-dao:
 install-all: install install-dao
 	@echo "$(GREEN)✅ All dependencies installed$(NC)"
 
-# Start the entire stack with Docker Compose
+# Start the basic infrastructure with Docker Compose
 up:
-	@echo "$(GREEN)Starting LuxDAO Stack...$(NC)"
+	@echo "$(GREEN)Starting LuxDAO Infrastructure...$(NC)"
+	@docker-compose -f docker-compose.simple.yml up -d
+	@echo "$(GREEN)✅ Infrastructure started successfully$(NC)"
+	@echo "$(YELLOW)Services:$(NC)"
+	@echo "  - Anvil RPC: http://localhost:8545"
+	@echo "  - PostgreSQL: localhost:5432"
+	@echo "  - Redis: localhost:6379"
+	@echo "  - IPFS: http://localhost:8080"
+	@echo ""
+	@echo "$(YELLOW)Run 'make dev' to start the application$(NC)"
+
+# Start the full stack with Docker Compose (including app)
+up-full:
+	@echo "$(GREEN)Starting Full LuxDAO Stack...$(NC)"
 	@docker-compose up -d
-	@echo "$(GREEN)✅ Stack started successfully$(NC)"
+	@echo "$(GREEN)✅ Full stack started successfully$(NC)"
 	@echo "$(YELLOW)Services:$(NC)"
 	@echo "  - DAO Frontend: http://localhost:3000"
 	@echo "  - API: http://localhost:4000"
@@ -55,14 +68,24 @@ local:
 	@echo "$(GREEN)Starting local environment...$(NC)"
 	@cd dao && ./scripts/start-local.sh
 
-# Stop the entire stack
+# Stop the infrastructure
 down:
-	@echo "$(YELLOW)Stopping LuxDAO Stack...$(NC)"
-	@docker-compose down
-	@echo "$(GREEN)✅ Stack stopped$(NC)"
+	@echo "$(YELLOW)Stopping LuxDAO Infrastructure...$(NC)"
+	@docker-compose -f docker-compose.simple.yml down
+	@echo "$(GREEN)✅ Infrastructure stopped$(NC)"
 
-# View logs for all services
+# Stop the full stack
+down-full:
+	@echo "$(YELLOW)Stopping Full LuxDAO Stack...$(NC)"
+	@docker-compose down
+	@echo "$(GREEN)✅ Full stack stopped$(NC)"
+
+# View logs for infrastructure services
 logs:
+	@docker-compose -f docker-compose.simple.yml logs -f
+
+# View logs for full stack
+logs-full:
 	@docker-compose logs -f
 
 # View logs for specific service
