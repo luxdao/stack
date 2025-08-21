@@ -4,7 +4,7 @@
   "description": "Complete DAO infrastructure for the Lux Protocol ecosystem",
   "private": true,
   "scripts": {
-    "install": "make install",
+    "postinstall": "echo 'Dependencies installed. Run make install-dao to install DAO dependencies'",
     "start": "make up",
     "dev": "make dev",
     "test": "make test",

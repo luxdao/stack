@@ -10,15 +10,25 @@ YELLOW := \033[1;33m
 NC := \033[0m # No Color
 
 # Default target
-all: install up
+all: install-all up
 
-# Install all dependencies for the entire stack
+# Install stack-level dependencies only (Playwright)
 install:
-	@echo "$(GREEN)Installing LuxDAO Stack dependencies...$(NC)"
-	@cd dao/contracts && pnpm install
-	@cd dao/app && pnpm install
-	@if [ -d "dao/api/packages/offchain" ]; then cd dao/api/packages/offchain && pnpm install; fi
+	@echo "$(GREEN)Installing stack dependencies...$(NC)"
+	@npm install --no-save
 	@npx playwright install chromium
+	@echo "$(GREEN)✅ Stack dependencies installed$(NC)"
+
+# Install DAO dependencies
+install-dao:
+	@echo "$(GREEN)Installing DAO dependencies...$(NC)"
+	@if [ -d "dao/contracts" ]; then cd dao/contracts && pnpm install; fi
+	@if [ -d "dao/app" ]; then cd dao/app && pnpm install; fi
+	@if [ -d "dao/api/packages/offchain" ]; then cd dao/api/packages/offchain && pnpm install; fi
+	@echo "$(GREEN)✅ DAO dependencies installed$(NC)"
+
+# Install all dependencies (stack + DAO)
+install-all: install install-dao
 	@echo "$(GREEN)✅ All dependencies installed$(NC)"
 
 # Start the entire stack with Docker Compose
