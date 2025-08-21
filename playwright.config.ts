@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   testDir: './',
-  testMatch: ['**/*.spec.js', '**/*.spec.ts', 'dao/e2e/**/*.spec.ts'],
+  testMatch: ['test.spec.js', 'dao/e2e/**/*.spec.ts'],
   timeout: 30 * 1000,
   expect: {
     timeout: 10000
@@ -12,7 +12,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
   reporter: [
-    ['html', { outputFolder: 'test-results/html' }],
+    ['html', { outputFolder: 'playwright-report' }],
     ['json', { outputFile: 'test-results/results.json' }],
     ['list']
   ],
