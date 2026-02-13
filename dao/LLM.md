@@ -9,7 +9,7 @@ Lux DAO is a decentralized autonomous organization platform built for the Lux Pr
 ## Project Status
 ✅ **Successfully Running Locally** - All critical issues resolved
 - Fixed Docker space issues with local development script
-- Resolved all import errors (useDAOModal → useDecentModal, DAOTooltip → DecentTooltip)
+- Resolved all import errors (useDAOModal → useLuxModal, DAOTooltip → LuxTooltip)
 - Fixed contract configuration for localhost deployment
 - Flipped triangle logo to point downward as requested
 - Updated favicon and branding to Lux Protocol
@@ -64,10 +64,10 @@ Lux DAO is a decentralized autonomous organization platform built for the Lux Pr
 
 ### Smart Contracts
 - **LinearERC20Voting**: Token-based voting mechanism
-- **Azorius**: Governance module
-- **DecentAutonomousAdmin**: Admin functions
-- **DecentHats**: Role management
-- **DecentSablierStreamManagement**: Payment streams
+- **Governor**: Governance module
+- **LuxAutonomousAdmin**: Admin functions
+- **LuxHats**: Role management
+- **LuxSablierStreamManagement**: Payment streams
 - **ERC6551Registry**: Token-bound accounts
 - **ERC20Claim**: Token claims
 - **KeyValuePairs**: Key-value storage
@@ -122,8 +122,8 @@ git commit -m "Initial commit: Lux DAO with flipped triangle logo and Lux Protoc
 ## Recent Fixes & Improvements
 
 ### Import Path Fixes
-1. **useDAOModal → useDecentModal**: Updated all imports across 150+ files
-2. **DAOTooltip → DecentTooltip**: Fixed tooltip component references
+1. **useDAOModal → useLuxModal**: Updated all imports across 150+ files
+2. **DAOTooltip → LuxTooltip**: Fixed tooltip component references
 3. **Created Missing Modules**:
    - `useDAOAPI.ts`: DAO search functionality
    - `DAOHourGlass.tsx`: Loading indicator component

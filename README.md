@@ -96,9 +96,9 @@ luxdao/stack/
 
 ### Smart Contracts
 - **LinearERC20Voting**: Token-based voting mechanism
-- **Azorius**: Modular governance framework
-- **DecentAutonomousAdmin**: Autonomous admin functions
-- **DecentHats**: Role management with Hats Protocol
+- **Governor**: Modular governance framework
+- **LuxAutonomousAdmin**: Autonomous admin functions
+- **LuxHats**: Role management with Hats Protocol
 - **KeyValuePairs**: On-chain key-value storage
 
 ### Frontend Features
